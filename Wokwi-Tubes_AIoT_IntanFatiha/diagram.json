@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": -9.6,
+      "left": -4.76,
+      "attrs": { "builder": "esp-idf" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -182.1,
+      "left": 215.4,
+      "attrs": { "temperature": "68.1", "humidity": "81.5" }
+    },
+    { "type": "wokwi-a4988", "id": "drv1", "top": 206.4, "left": -177.6, "attrs": {} },
+    {
+      "type": "wokwi-stepper-motor",
+      "id": "stepper1",
+      "top": 195.61,
+      "left": 144.43,
+      "rotate": 90,
+      "attrs": { "size": "17" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -125.1,
+      "left": -207.1,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-rgb-led",
+      "id": "rgb1",
+      "top": -14.4,
+      "left": 447.3,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v9.6", "h-250.89" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v0" ] ],
+    [ "ldr1:AO", "esp:34", "cyan", [ "v0" ] ],
+    [ "ldr1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "ldr1:VCC", "esp:3V3", "orange", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "drv1:STEP", "esp:26", "green", [ "v57.6", "h105.45" ] ],
+    [ "drv1:DIR", "esp:27", "purple", [ "h-38.4", "v28.8", "h124.8", "v-201.6" ] ],
+    [ "drv1:VDD", "esp:3V3", "blue", [ "h19.35", "v-278.32", "h38.25" ] ],
+    [ "esp:GND.1", "drv1:GND.1", "black", [ "h-28.65", "v143.92" ] ],
+    [ "stepper1:A-", "drv1:1B", "cyan", [ "h0" ] ],
+    [ "stepper1:A+", "drv1:1A", "yellow", [ "h0" ] ],
+    [ "stepper1:B+", "drv1:2A", "gold", [ "h0" ] ],
+    [ "stepper1:B-", "drv1:2B", "#8f4814", [ "v-1.09", "h-262.09" ] ],
+    [ "rgb1:R", "esp:18", "blue", [ "v0" ] ],
+    [ "rgb1:G", "esp:19", "limegreen", [ "v0" ] ],
+    [ "rgb1:B", "esp:21", "red", [ "v0" ] ],
+    [ "rgb1:COM", "esp:3V3", "#8f4814", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
