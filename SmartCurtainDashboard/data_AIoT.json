@@ -1,0 +1,15 @@
+{
+  "sensor": {
+    "lux": 850,
+    "temperature": 29,
+    "humidity": 65
+  },
+  "prediction": {
+    "lux_next": 920,
+    "temperature_next": 30,
+    "humidity_next": 63
+  },
+  "curtain": {
+    "position": 45
+  }
+}
